@@ -61,7 +61,7 @@ func initEnemigos() {
 
 	rand.Seed(time.Now().UnixNano())
 	for i = randNum; i < numEnemigo+randNum; i++ {
-		en = `sircovid\data\enemigo` + strconv.Itoa(i+1) + `.png`
+		en = `data/enemigo` + strconv.Itoa(i+1) + `.png`
 		enemigo.FrameOX[i] = 48
 		enemigo.FrameOY[i] = 72 * rand.Intn(4)
 		enemigo.FrameNum[i] = 1

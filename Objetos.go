@@ -43,7 +43,7 @@ func initObjetos() {
 	barbijo.FrameHeight = 17
 	barbijo.X = float64(650)
 	barbijo.Y = float64(150)
-	barbijo.img, _, err = ebitenutil.NewImageFromFile(`sircovid\data\objetos.png`, ebiten.FilterDefault)
+	barbijo.img, _, err = ebitenutil.NewImageFromFile(`data/objetos.png`, ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -82,7 +82,7 @@ func initObjetos() {
 	fondoNegro.FrameHeight = 460
 	fondoNegro.X = float64(305)
 	fondoNegro.Y = float64(230)
-	fondoNegro.img, _, err = ebitenutil.NewImageFromFile(`sircovid\data\mission-fondo.png`, ebiten.FilterDefault)
+	fondoNegro.img, _, err = ebitenutil.NewImageFromFile(`data/mission-fondo.png`, ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -156,7 +156,7 @@ func initObjetos() {
 	fondoNegroCommans.FrameHeight = 500
 	fondoNegroCommans.X = float64(180)
 	fondoNegroCommans.Y = float64(0)
-	fondoNegroCommans.img, _, err = ebitenutil.NewImageFromFile(`sircovid\data\fondoNegro.png`, ebiten.FilterDefault)
+	fondoNegroCommans.img, _, err = ebitenutil.NewImageFromFile(`data/fondoNegro.png`, ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -168,7 +168,7 @@ func initObjetos() {
 	fondoNegroCompras.FrameHeight = 300
 	fondoNegroCompras.X = float64(30)
 	fondoNegroCompras.Y = float64(100)
-	fondoNegroCompras.img, _, err = ebitenutil.NewImageFromFile(`sircovid\data\fondoNegro1.png`, ebiten.FilterDefault)
+	fondoNegroCompras.img, _, err = ebitenutil.NewImageFromFile(`data/fondoNegro1.png`, ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -237,26 +237,30 @@ func initObjetos() {
 }
 
 func dibujarNiveles(screen *ebiten.Image) {
-	dibujarObjetos(mhome, screen)
-	dibujarObjetos(money, screen)
+	if ModeTitleLevel || (ModeGame && monedas.X != 1500) {
+		dibujarObjetos(money, screen)
+	}
+	if ModeTitleLevel || (ModeGame && (player1.CompleteLevel || player2.CompleteLevel)) {
+		dibujarObjetos(mhome, screen)
+	}
 
-	if Level == 1 || Level == 5 || Level == 6 || Level == 8 {
+	if (ModeTitleLevel || ((player1.Coins > 2 || player2.Coins > 2) && !farmacia1)) && (Level == 1 || Level == 5 || Level == 6 || Level == 8) {
 		dibujarObjetos(meds, screen)
 
 	}
-	if Level == 2 || Level == 5 || Level == 7 || Level == 10 {
+	if (ModeTitleLevel || ((player1.Coins > 2 || player2.Coins > 2) && !bakery1)) && (Level == 2 || Level == 5 || Level == 7 || Level == 10) {
 		dibujarObjetos(bread, screen)
 
 	}
-	if Level == 3 || Level == 7 || Level == 8 || Level == 9 {
+	if (ModeTitleLevel || ((player1.Coins > 2 || player2.Coins > 2) && !mart1)) && (Level == 3 || Level == 7 || Level == 8 || Level == 9) {
 		dibujarObjetos(clothes, screen)
 
 	}
-	if Level == 4 || Level == 6 || Level == 9 || Level == 10 {
+	if (ModeTitleLevel || ((player1.Coins > 2 || player2.Coins > 2) && !supermarket1)) && (Level == 4 || Level == 6 || Level == 9 || Level == 10) {
 		dibujarObjetos(tpaper, screen)
 
 	}
-	if Level > 10 {
+	if !ModeWin && (ModeTitleLevel || (player1.Coins > 2 || player2.Coins > 2)) && Level > 10 {
 		dibujarObjetos(vaccine, screen)
 
 	}

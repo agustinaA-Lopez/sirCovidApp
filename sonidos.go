@@ -163,7 +163,7 @@ func initSonido() {
 	audioContext, _ = audio.NewContext(32000)
 
 	// sonido fondo
-	s, err := os.Open(`sircovid\data\audio\SIR-COVID.mp3`)
+	s, err := os.Open(`data/audio/SIR-COVID.mp3`)
 	if err != nil {
 		panic(err)
 	}
@@ -184,7 +184,7 @@ func initSonido() {
 		log.Fatal(err)
 	}
 	// sonido intro
-	s, err = os.Open(`sircovid\data\audio\introconteclas.mp3`)
+	s, err = os.Open(`data/audio/introconteclas.mp3`)
 	if err != nil {
 		panic(err)
 	}
@@ -206,7 +206,7 @@ func initSonido() {
 	}
 
 	//sonido Puerta
-	s, err = os.Open(`sircovid\data\audio\puertas ingresos.mp3`)
+	s, err = os.Open(`data/audio/puertas ingresos.mp3`)
 	if err != nil {
 		panic(err)
 	}
@@ -224,7 +224,7 @@ func initSonido() {
 	}
 
 	//sonido Monedas
-	s, err = os.Open(`sircovid\data\audio\DINERO.mp3`)
+	s, err = os.Open(`data/audio/DINERO.mp3`)
 	if err != nil {
 		panic(err)
 	}
@@ -241,7 +241,7 @@ func initSonido() {
 		log.Fatal(err)
 	}
 	// sonido Fast
-	s, err = os.Open(`sircovid\data\audio\ALRIGHT! COFFE.mp3`)
+	s, err = os.Open(`data/audio/ALRIGHT! COFFE.mp3`)
 	if err != nil {
 		panic(err)
 	}
@@ -260,7 +260,7 @@ func initSonido() {
 
 	// sonido barbijo o alcohol
 
-	s, err = os.Open(`sircovid\data\audio\ponerse barbijo.mp3`)
+	s, err = os.Open(`data/audio/ponerse barbijo.mp3`)
 	if err != nil {
 		panic(err)
 	}
@@ -279,7 +279,7 @@ func initSonido() {
 
 	//sonido Pasar Nivel
 
-	s, err = os.Open(`sircovid\data\audio\PASAR DE NIVEL.mp3`)
+	s, err = os.Open(`data/audio/PASAR DE NIVEL.mp3`)
 	if err != nil {
 		panic(err)
 	}
@@ -297,7 +297,7 @@ func initSonido() {
 	}
 
 	// sonido perder vida
-	s, err = os.Open(`sircovid\data\audio\tos1.mp3`)
+	s, err = os.Open(`data/audio/tos1.mp3`)
 	if err != nil {
 		panic(err)
 	}
@@ -315,7 +315,7 @@ func initSonido() {
 	}
 
 	// sonido muerte
-	s, err = os.Open(`sircovid\data\audio\sonido muerte o daño por nube.mp3`)
+	s, err = os.Open(`data/audio/sonido muerte o daño por nube.mp3`)
 	if err != nil {
 		panic(err)
 	}
@@ -333,7 +333,7 @@ func initSonido() {
 	}
 
 	// sonido pierdevida Player2
-	s, err = os.Open(`sircovid\data\audio\estornudo fem 2.mp3`)
+	s, err = os.Open(`data/audio/estornudo fem 2.mp3`)
 	if err != nil {
 		panic(err)
 	}
@@ -350,7 +350,7 @@ func initSonido() {
 	}
 
 	// sonido muerte Player2
-	s, err = os.Open(`sircovid\data\audio\muerte fem 3.mp3`)
+	s, err = os.Open(`data/audio/muerte fem 3.mp3`)
 	if err != nil {
 		panic(err)
 	}
