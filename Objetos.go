@@ -237,26 +237,30 @@ func initObjetos() {
 }
 
 func dibujarNiveles(screen *ebiten.Image) {
-	dibujarObjetos(mhome, screen)
-	dibujarObjetos(money, screen)
+	if ModeTitleLevel || (ModeGame && monedas.X != 1500) {
+		dibujarObjetos(money, screen)
+	}
+	if ModeTitleLevel || (ModeGame && (player1.CompleteLevel || player2.CompleteLevel)) {
+		dibujarObjetos(mhome, screen)
+	}
 
-	if Level == 1 || Level == 5 || Level == 6 || Level == 8 {
+	if (ModeTitleLevel || ((player1.Coins > 2 || player2.Coins > 2) && !farmacia1)) && (Level == 1 || Level == 5 || Level == 6 || Level == 8) {
 		dibujarObjetos(meds, screen)
 
 	}
-	if Level == 2 || Level == 5 || Level == 7 || Level == 10 {
+	if (ModeTitleLevel || ((player1.Coins > 2 || player2.Coins > 2) && !bakery1)) && (Level == 2 || Level == 5 || Level == 7 || Level == 10) {
 		dibujarObjetos(bread, screen)
 
 	}
-	if Level == 3 || Level == 7 || Level == 8 || Level == 9 {
+	if (ModeTitleLevel || ((player1.Coins > 2 || player2.Coins > 2) && !mart1)) && (Level == 3 || Level == 7 || Level == 8 || Level == 9) {
 		dibujarObjetos(clothes, screen)
 
 	}
-	if Level == 4 || Level == 6 || Level == 9 || Level == 10 {
+	if (ModeTitleLevel || ((player1.Coins > 2 || player2.Coins > 2) && !supermarket1)) && (Level == 4 || Level == 6 || Level == 9 || Level == 10) {
 		dibujarObjetos(tpaper, screen)
 
 	}
-	if Level > 10 {
+	if !ModeWin && (ModeTitleLevel || (player1.Coins > 2 || player2.Coins > 2)) && Level > 10 {
 		dibujarObjetos(vaccine, screen)
 
 	}

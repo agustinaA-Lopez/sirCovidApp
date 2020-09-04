@@ -146,11 +146,12 @@ func compar(p player) player {
 	if (inpututil.IsKeyJustPressed(ebiten.KeyUp) && p.señalador == 0) || (inpututil.IsKeyJustPressed(ebiten.KeyW) && p.señalador == 1) {
 		elecCompras--
 	}
+	if elecCompras > 1 && (bakery || vacunatorio) {
+		elecCompras = 1
+	}
+
 	if elecCompras > 2 {
 		elecCompras = 2
-	}
-	if elecCompras > 1 && bakery && vacunatorio {
-		elecCompras = 1
 	}
 	if elecCompras == 0 && vacunatorio && p.Coins < 10 {
 		elecCompras = 1
@@ -260,7 +261,6 @@ func comandos() {
 		player1.Coins += 10
 	}
 }
-
 func dibujarTextoCompras(p player, screen *ebiten.Image) {
 
 	if p.Compras {

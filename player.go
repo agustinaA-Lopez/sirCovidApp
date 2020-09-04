@@ -403,6 +403,14 @@ func vida(h humanos, p player, b Objetos, pl Objetos) (player, Objetos, Objetos)
 		p.CountPoder = 1200
 	}
 
+	if b == alchol && p.X[0]+wth > b.X && p.X[0] < b.X+barWscale+20 && p.Y[0]+hgt-45 > b.Y && p.Y[0]+hgt-45 < b.Y+barHScale {
+		sBarbijo.Play()
+		sBarbijo.Rewind()
+		b.X = 1500
+		p.Inmune = true
+		p.CountPoder = 1200
+	}
+
 	if p.Inmune || p.Fast {
 
 		p.CountPoder--

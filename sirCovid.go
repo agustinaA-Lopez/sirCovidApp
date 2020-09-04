@@ -48,7 +48,7 @@ func (g *Game) Update(screen *ebiten.Image) error {
 	g.count++
 	count1++
 	countVida++
-	if count1 == 60 {
+	if count1 == 80 {
 		count1 = 0
 	}
 	//func sonido
@@ -65,7 +65,7 @@ func (g *Game) Update(screen *ebiten.Image) error {
 			Commands = !Commands
 		}
 	}
-	if inpututil.IsKeyJustPressed(ebiten.KeySpace) || inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
+	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
 		Commands = false
 		Credits = false
 	}
@@ -79,6 +79,7 @@ func (g *Game) Update(screen *ebiten.Image) error {
 	case ModePause:
 		if inpututil.IsKeyJustPressed(ebiten.KeySpace) {
 			ModePause = !ModePause
+			// arreglo bug
 		}
 	case ModeWin:
 	//toda la introduccion con eleccion de players, etc
@@ -157,6 +158,7 @@ func (g *Game) Update(screen *ebiten.Image) error {
 		}
 	}
 	return nil
+
 }
 
 ////////////////////////////
@@ -213,27 +215,10 @@ func (g *Game) Draw(screen *ebiten.Image) {
 
 	default:
 		screen.DrawImage(imgTiles, op)
-		dibujarObjetos(fondoNegroVidas1, screen)
-
-		//dibujar objetos
-		dibujarObjetos(barbijo, screen)
-		dibujarObjetos(plasma, screen)
 
 		//dibuja al enemigo
 		dibujarEnemigos(enemigo, screen)
 
-		if ModeTitle {
-			dibujarObjetos(fondoNegro, screen)
-		}
-		if ModePause || ModeTitleLevel {
-			dibujarObjetos(fondoNegroPause, screen)
-
-		}
-		// if Commands {
-		// 	dibujarObjetos(fondoNegroCommans, screen)
-		// }
-
-		//dibujar palyers
 		if !ModeTitleLevel && !ModePause {
 			dibujarPlayer(player1, screen)
 			if Game1.numPlayers == 2 {
@@ -241,21 +226,49 @@ func (g *Game) Draw(screen *ebiten.Image) {
 				dibujarPlayer(player2, screen)
 			}
 		}
+		// dibujar nube
+		dibujarNube(nube1, screen)
+
+		dibujarObjetos(fondoNegroVidas1, screen)
+
+		//dibujar objetos
+		dibujarObjetos(barbijo, screen)
+		dibujarObjetos(plasma, screen)
+
+		if ModeTitle {
+			dibujarObjetos(fondoNegro, screen)
+			dibujarPlayer(player1, screen)
+			if Game1.numPlayers == 2 {
+				dibujarObjetos(fondoNegroVidas2, screen)
+				dibujarPlayer(player2, screen)
+			}
+		}
+
+		if ModePause || ModeTitleLevel {
+			dibujarObjetos(fondoNegroPause, screen)
+
+		}
+
 		if player1.Compras || player2.Compras || ModeGameOver || ModeWin {
 			dibujarObjetos(fondoNegroCompras, screen)
 		}
 		//dibujar textos compras
 		dibujarTextoCompras(player1, screen)
 		dibujarTextoCompras(player2, screen)
-		// dibujar nube
-		dibujarNube(nube1, screen)
+		// // dibujar nube
+		// dibujarNube(nube1, screen)
 
 		if ModeTitleLevel || ModePause {
 			dibujarNiveles(screen)
 			if Game1.numPlayers == 2 {
 				dibujarObjetos(fondoNegroVidas2, screen)
 			}
-
+		}
+		if ModeGame && count1 < 60 && !banco && !casita {
+			dibujarNiveles(screen)
+			if Game1.numPlayers == 2 {
+				dibujarObjetos(fondoNegroVidas2, screen)
+			}
 		}
 	}
 	if player1.Inmune {
