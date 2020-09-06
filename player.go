@@ -319,7 +319,7 @@ func moverPlayer(p player) player {
 		farmacia = false
 		sonidoPuerta()
 		//salida de Comida China
-	case p.Y[0] < -36 && p.Y[0] > -39 && p.X[0] > 990 && p.X[0] < 1020:
+	case p.Y[0] < -36 && p.Y[0] > -39 && p.X[0] > 980 && p.X[0] < 1022:
 		p.Y[0] = 187
 		bakery = false
 		sonidoPuerta()
