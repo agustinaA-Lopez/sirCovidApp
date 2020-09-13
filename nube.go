@@ -49,7 +49,7 @@ func initNube() {
 
 	posicionNube()
 
-	nube1.img, _, err = ebitenutil.NewImageFromFile(`sircovid\data\smoke.png`, ebiten.FilterDefault)
+	nube1.img, _, err = ebitenutil.NewImageFromFile(`data/smoke.png`, ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}

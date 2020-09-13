@@ -40,12 +40,12 @@ var (
 func initPlayer() {
 
 	//////////////   Imangen VIEJO  //////////////////////////////
-	humano1.img[0], _, err = ebitenutil.NewImageFromFile(`sircovid\data\player1 (2).png`, ebiten.FilterDefault)
+	humano1.img[0], _, err = ebitenutil.NewImageFromFile(`data/player1 (2).png`, ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}
-	//imagen chica
-	humano2.img[0], _, err = ebitenutil.NewImageFromFile(`sircovid\data\player2 (2).png`, ebiten.FilterDefault)
+	//imagen chic
+	humano2.img[0], _, err = ebitenutil.NewImageFromFile(`data/player2 (2).png`, ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -319,7 +319,7 @@ func moverPlayer(p player) player {
 		farmacia = false
 		sonidoPuerta()
 		//salida de Comida China
-	case p.Y[0] < -36 && p.Y[0] > -39 && p.X[0] > 990 && p.X[0] < 1020:
+	case p.Y[0] < -36 && p.Y[0] > -39 && p.X[0] > 980 && p.X[0] < 1022:
 		p.Y[0] = 187
 		bakery = false
 		sonidoPuerta()
@@ -396,6 +396,14 @@ func vida(h humanos, p player, b Objetos, pl Objetos) (player, Objetos, Objetos)
 
 	//inmune con barbijo o alchol en gel
 	if !casita && !banco && p.X[0]+wth > b.X && p.X[0] < b.X+barWscale+20 && p.Y[0]+hgt-45 > b.Y && p.Y[0]+hgt-45 < b.Y+barHScale {
+		sBarbijo.Play()
+		sBarbijo.Rewind()
+		b.X = 1500
+		p.Inmune = true
+		p.CountPoder = 1200
+	}
+
+	if b == alchol && p.X[0]+wth > b.X && p.X[0] < b.X+barWscale+20 && p.Y[0]+hgt-45 > b.Y && p.Y[0]+hgt-45 < b.Y+barHScale {
 		sBarbijo.Play()
 		sBarbijo.Rewind()
 		b.X = 1500

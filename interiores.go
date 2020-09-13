@@ -15,17 +15,17 @@ func interior() {
 	wth = float64(player1.FrameWidth[0]) * hScaleW
 	switch {
 	case casita:
-		imgCasita, _, err = ebitenutil.NewImageFromFile(`sircovid\data\casita.png`, ebiten.FilterDefault)
+		imgCasita, _, err = ebitenutil.NewImageFromFile(`data/casita.png`, ebiten.FilterDefault)
 		if err != nil {
 			log.Fatal(err)
 		}
 
 	case banco:
-		imgBanco, _, err = ebitenutil.NewImageFromFile(`sircovid\data\banco.png`, ebiten.FilterDefault)
+		imgBanco, _, err = ebitenutil.NewImageFromFile(`data/banco.png`, ebiten.FilterDefault)
 		if err != nil {
 			log.Fatal(err)
 		}
-		imgCintas, _, err = ebitenutil.NewImageFromFile(`sircovid\data\cintas.png`, ebiten.FilterDefault)
+		imgCintas, _, err = ebitenutil.NewImageFromFile(`data/cintas.png`, ebiten.FilterDefault)
 		if err != nil {
 			log.Fatal(err)
 		}

@@ -47,14 +47,14 @@ func (i *intro) initIntro(screenWidth int, screenHeight int) {
 	i.logoAlpha = float64(0)
 	i.logoAlphaDir = "up"
 
-	i.imgLogo, _, err = ebitenutil.NewImageFromFile(`sircovid\data\sircovid.png`, ebiten.FilterDefault)
+	i.imgLogo, _, err = ebitenutil.NewImageFromFile(`data/sircovid.png`, ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}
 	i.logoWidth, i.logoHeight = i.imgLogo.Size()
 
 	// covids
-	i.imgCovid, _, err = ebitenutil.NewImageFromFile(`sircovid\data\covid.png`, ebiten.FilterDefault)
+	i.imgCovid, _, err = ebitenutil.NewImageFromFile(`data/covid.png`, ebiten.FilterDefault)
 	i.imgCovidWidth, i.imgCovidHeight = i.imgCovid.Size()
 	if err != nil {
 		log.Fatal(err)
